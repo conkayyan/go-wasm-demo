@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qrcode</title>
+    <script src="static/wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("static/qrcode.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+</head>
+<body>
+<img src="" alt="" id="qrcode" /><br>
+<input type="text" id="str" style="border:1px solid #000000;" width="256" height="256">
+<input type="button" value="submit" id="btn">
+</body>
+</html>
